@@ -26,6 +26,7 @@
 		83C918ED213E173400FD6F83 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B02213621EE000C70F9 /* Post.swift */; };
 		83C918EE213E173700FD6F83 /* DisplayOrdering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */; };
 		83C918EF213E18E500FD6F83 /* PostMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B0421362224000C70F9 /* PostMetadata.swift */; };
+		9771D1E322A95CA50053C400 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771D1E222A95CA50053C400 /* Author.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		83B00B02213621EE000C70F9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		83B00B0421362224000C70F9 /* PostMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMetadata.swift; sourceTree = "<group>"; };
 		83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrdering.swift; sourceTree = "<group>"; };
+		9771D1E222A95CA50053C400 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				836E38D22139A918005B928C /* Server.swift */,
 				83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */,
 				83B00B0421362224000C70F9 /* PostMetadata.swift */,
+				9771D1E222A95CA50053C400 /* Author.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				83B00B00213606BC000C70F9 /* PostViewController.swift in Sources */,
 				83B00ACA21359CFF000C70F9 /* AppDelegate.swift in Sources */,
 				83B00B0521362224000C70F9 /* PostMetadata.swift in Sources */,
+				9771D1E322A95CA50053C400 /* Author.swift in Sources */,
 				83C918E9213DDBD100FD6F83 /* DisplayOrdering.swift in Sources */,
 				8367F7D3215C2E5000C250AC /* PostMetadataDataSource.swift in Sources */,
 				83B00AFC21359FE1000C70F9 /* PostMetadataCollectionViewController.swift in Sources */,

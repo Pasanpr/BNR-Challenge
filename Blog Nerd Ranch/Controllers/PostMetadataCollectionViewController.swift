@@ -20,11 +20,21 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     var downloadTask : URLSessionTask?
     var dataSource = PostMetadataDataSource(ordering: DisplayOrdering(grouping:.none, sorting: .byPublishDate(recentFirst: false)))
     
+    lazy var flowLayout: UICollectionViewFlowLayout = {
+        return self.collectionViewLayout as! UICollectionViewFlowLayout
+    }()
+    
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.timeZone = TimeZone.autoupdatingCurrent
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Register cell classes
-        self.collectionView!.register(PostMetadataCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         title = "Blog Posts"
@@ -113,6 +123,9 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
         
         // Configure the cell
         cell.titleLabel.text = postMetadata.title
+        cell.authorLabel.text = postMetadata.author.name
+        cell.publishDateLabel.text = dateFormatter.string(from: postMetadata.publishDate)
+        cell.summaryLabel.text = postMetadata.summary
     
         return cell
     }
@@ -174,7 +187,7 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 50)
+        return CGSize(width: 300, height: 180)
     }
     
     // MARK: - Data methods

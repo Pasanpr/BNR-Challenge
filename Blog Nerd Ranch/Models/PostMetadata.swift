@@ -12,4 +12,6 @@ struct PostMetadata : Codable {
     let title : String
     let publishDate : Date
     let postId : String
+    let summary: String
+    let author: Author
 }
