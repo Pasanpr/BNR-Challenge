@@ -100,10 +100,12 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     
     func group(by grouping: Grouping) {
         dataSource.ordering.grouping = grouping
+        collectionView.reloadData()
     }
     
     func sort(_ sorting: Sorting) {
         dataSource.ordering.sorting = sorting
+        collectionView.reloadData()
     }
     
     // MARK: UICollectionViewDataSource
@@ -129,18 +131,30 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader {
+            
+            let title = dataSource.titleForSection(indexPath.section)
+            sectionHeader.sectionHeaderLabel.text = title
+            return sectionHeader
+        }
+        
+        return UICollectionReusableView()
+    }
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let postMetadata = dataSource.postMetadata(at: indexPath)
 
-        let url = server.allPostsUrl
+        let url = server.postUrlFor(id: postMetadata.postId)
 
         // Get all posts, filter to the selected post, and then show it
         // Is there a better way to do this?
         if downloadTask?.progress.isCancellable ?? false {
             downloadTask?.cancel()
         }
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
             guard error == nil else {
                 self?.displayError(error: error!)
@@ -151,26 +165,22 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
                 return
             }
             
-            let posts : [Post]?
             let decoder = JSONDecoder();
             decoder.dateDecodingStrategy = .iso8601
             do {
-                posts = try decoder.decode(Array<Post>.self, from: data)
+                let post = try decoder.decode(Post.self, from: data)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let postController = storyboard.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+                postController.post = post
+                
+                DispatchQueue.main.async {
+                    self?.navigationController?.pushViewController(postController, animated: true)
+                }
+                
             } catch {
                 self?.displayError(error: error)
                 return
-            }
-            
-            let selectedPost = posts?.first(where: { (post) -> Bool in
-                return post.id == postMetadata.postId
-            })
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let postController = storyboard.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
-            postController.post = selectedPost
-            
-            DispatchQueue.main.async {
-                self?.navigationController?.pushViewController(postController, animated: true)
             }
         }
         task.resume()
@@ -180,14 +190,6 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
-    }
-
-    // Mark: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 180)
     }
     
     // MARK: - Data methods

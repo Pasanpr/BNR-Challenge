@@ -13,3 +13,16 @@ struct Author: Codable {
     let image: String
     let title: String
 }
+
+
+extension Author: Equatable {
+    static func ==(lhs: Author, rhs: Author) -> Bool {
+        return lhs.name == rhs.name && lhs.image == rhs.image && lhs.title == rhs.title
+    }
+}
+
+extension Author: Comparable {
+    static func <(lhs: Author, rhs: Author) -> Bool {
+        return lhs.name < rhs.name
+    }
+}

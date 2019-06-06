@@ -27,6 +27,8 @@
 		83C918EE213E173700FD6F83 /* DisplayOrdering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */; };
 		83C918EF213E18E500FD6F83 /* PostMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B0421362224000C70F9 /* PostMetadata.swift */; };
 		9771D1E322A95CA50053C400 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771D1E222A95CA50053C400 /* Author.swift */; };
+		9771D1E522A96D010053C400 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771D1E422A96D010053C400 /* SectionHeader.swift */; };
+		9771D1E622A9AD520053C400 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771D1E222A95CA50053C400 /* Author.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,7 @@
 		83B00B0421362224000C70F9 /* PostMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMetadata.swift; sourceTree = "<group>"; };
 		83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrdering.swift; sourceTree = "<group>"; };
 		9771D1E222A95CA50053C400 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		9771D1E422A96D010053C400 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				83B00AFD2135A4C8000C70F9 /* PostMetadataCollectionViewCell.swift */,
+				9771D1E422A96D010053C400 /* SectionHeader.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -320,6 +324,7 @@
 				83C918E9213DDBD100FD6F83 /* DisplayOrdering.swift in Sources */,
 				8367F7D3215C2E5000C250AC /* PostMetadataDataSource.swift in Sources */,
 				83B00AFC21359FE1000C70F9 /* PostMetadataCollectionViewController.swift in Sources */,
+				9771D1E522A96D010053C400 /* SectionHeader.swift in Sources */,
 				83B00AFE2135A4C8000C70F9 /* PostMetadataCollectionViewCell.swift in Sources */,
 				83B00B03213621EE000C70F9 /* Post.swift in Sources */,
 			);
@@ -334,6 +339,7 @@
 				83B00ADF21359D00000C70F9 /* PostMetadataDataSourceTests.swift in Sources */,
 				83C918ED213E173400FD6F83 /* Post.swift in Sources */,
 				83C918EE213E173700FD6F83 /* DisplayOrdering.swift in Sources */,
+				9771D1E622A9AD520053C400 /* Author.swift in Sources */,
 				8367F7D4215C2E5F00C250AC /* PostMetadataDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

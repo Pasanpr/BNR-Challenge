@@ -1,3 +1,5 @@
+My notes can be found [here](./Notes.md)
+
 # Big Nerd Ranch iOS Coding Challenge
 Thanks for your interest in joining Big Nerd Ranch! This repository has a half-
 finished app in it. There are some bugs, there's missing functionality, and
